@@ -1,0 +1,154 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f5f7fb;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 50px;
+  background: white;
+}
+
+nav h2 {
+  color: #2563eb;
+}
+
+nav a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: #333;
+}
+
+section {
+  text-align: center;
+  padding: 100px 20px;
+}
+
+section h1 {
+  font-size: 48px;
+  color: #111827;
+}
+
+section p {
+  font-size: 20px;
+  color: #555;
+  max-width: 600px;
+  margin: 20px auto;
+}
+
+button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 15px 35px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.tools {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.tools h2 {
+  font-size: 36px;
+  margin-bottom: 40px;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: white;
+  width: 280px;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+  color: #2563eb;
+  font-size: 22px;
+}
+
+.card p {
+  color: #555;
+  line-height: 1.6;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  transition: 0.3s;
+}
+  
+.generator {
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.generator h2 {
+  font-size: 36px;
+  color: #111827;
+}
+
+.generator p {
+  font-size: 18px;
+  color: #555;
+}
+
+textarea {
+  width: 600px;
+  height: 180px;
+  padding: 20px;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  resize: none;
+  margin-top: 20px;
+}
+textarea::placeholder {
+  font-family: Arial, sans-serif;
+  color: #777;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+.generator {
+  background: white;
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 50px 30px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.generator h2 {
+  color: #2563eb;
+}
+
+.generator textarea {
+  width: 80%;
+  min-height: 200px;
+  padding: 20px;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  border-radius: 15px;
+  border: 1px solid #ddd;
+}
+
+.generator button {
+  margin-top: 20px;
+}
