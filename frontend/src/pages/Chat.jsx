@@ -149,8 +149,9 @@ const renameChat = (index, newTitle) => {
 
 
     try {
-      const response = await fetch(
-        "http://localhost:5000/chat",
+const response = await fetch(
+  "/api/chat",
+  
         {
           method: "POST",
           headers: {
