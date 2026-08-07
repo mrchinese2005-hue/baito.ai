@@ -13,7 +13,13 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { messages } = req.body;
+    const { messages } = req.body || {};
+
+    if (!Array.isArray(messages)) {
+      return res.status(400).json({
+        message: "messages must be an array",
+      });
+    }
 
     const completion = await client.chat.completions.create({
       model: "openai/gpt-oss-20b:free",
@@ -28,16 +34,15 @@ export default async function handler(req, res) {
       ],
     });
 
-    const reply = completion.choices[0].message.content;
+    const reply = completion.choices?.[0]?.message?.content;
 
-    res.status(200).json({
-      reply,
+    return res.status(200).json({
+      reply: reply || "Sorry, I could not generate a response.",
     });
-
   } catch (error) {
     console.error("OPENROUTER ERROR:", error);
 
-    res.status(500).json({
+    return res.status(500).json({
       reply: "Sorry, BAITO AI is temporarily unavailable.",
     });
   }

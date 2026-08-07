@@ -150,7 +150,7 @@ const renameChat = (index, newTitle) => {
 
     try {
 const response = await fetch(
-  "/api/chat",
+  "http://localhost:5000/chat",
   
         {
           method: "POST",
@@ -170,49 +170,12 @@ const response = await fetch(
       );
 
 
-      const reader = response.body.getReader();
-const decoder = new TextDecoder();
+      const data = await response.json();
 
-let aiText = "";
+const aiText = data.reply;
 
-setMessages((prev) => [
-  ...prev,
-  {
-    sender: "ai",
-    text: "",
-  },
-]);
+typeMessage(aiText);
 
-while (true) {
-  const { done, value } = await reader.read();
-
-  if (done) break;
-
-  const chunk = decoder.decode(value);
-
-try {
-  const json = JSON.parse(chunk);
-
-  if (json.reply) {
-    aiText += json.reply;
-  }
-} catch {
-  aiText += chunk;
-}
-
-  setMessages((prev) => {
-    const updated = [...prev];
-
-    updated[updated.length - 1] = {
-      ...updated[updated.length - 1],
-      text: aiText,
-    };
-
-    return updated;
-  });
-}
-
-setIsTyping(false);
 speak(aiText);
 
     } catch (error) {

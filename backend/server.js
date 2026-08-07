@@ -25,34 +25,27 @@ app.post("/chat", async (req, res) => {
   try {
     const { messages } = req.body;
 
-const completion = await client.chat.completions.create({
-  model: "openai/gpt-oss-20b:free",
-  max_tokens: 500,
-  messages: [
-    {
-      role: "system",
-content:
-"You are BAITO AI, a helpful AI assistant. Give clear and concise answers. Avoid unnecessary long explanations unless the user asks for details. Use simple formatting.",
-    },
-    ...messages,
-  ],
-  stream: true,
-});
+    const response = await client.chat.completions.create({
+      model: "openai/gpt-oss-20b:free",
+      messages: [
+        {
+          role: "system",
+          content:
+            "You are BAITO AI, a helpful AI assistant. Give clear and concise answers.",
+        },
+        ...messages,
+      ],
+    });
 
-let reply = "";
+    const reply = response.choices[0].message.content;
 
-for await (const chunk of completion) {
-  const text = chunk.choices[0]?.delta?.content || "";
-  reply += text;
-}
+    res.json({
+      reply,
+    });
 
-res.json({
-  reply,
-});
-  
   } catch (error) {
-    console.error("OPENROUTER ERROR:");
-    console.error(error);
+    console.error("BAITO AI ERROR:");
+    console.error(error.message);
 
     res.status(500).json({
       reply: "Sorry, BAITO AI is temporarily unavailable.",
@@ -63,5 +56,5 @@ res.json({
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
+  console.log(`🚀 BAITO AI Backend running on port ${PORT}`);
 });
