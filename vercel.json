@@ -1,0 +1,9 @@
+{
+  "buildCommand": "cd frontend && npm run build",
+  "outputDirectory": "frontend/dist",
+  "functions": {
+    "api/chat.js": {
+      "runtime": "nodejs24.x"
+    }
+  }
+}
