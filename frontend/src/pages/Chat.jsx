@@ -150,7 +150,7 @@ const renameChat = (index, newTitle) => {
 
     try {
 const response = await fetch(
-"https://baito-ai.mrchinese2005.workers.dev/chat",
+    "https://baito-ai-backend.mrchinese2005.workers.dev/chat",
         {
           method: "POST",
           headers: {
@@ -249,3 +249,4 @@ speak(aiText);
 }
 
 export default Chat;
+
