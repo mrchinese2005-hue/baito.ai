@@ -150,8 +150,7 @@ const renameChat = (index, newTitle) => {
 
     try {
 const response = await fetch(
-  "http://localhost:5000/chat",
-  
+"https://baito-ai.mrchinese2005.workers.dev/chat",
         {
           method: "POST",
           headers: {
